@@ -2,7 +2,7 @@
 #Win32 Utility Library
 
 winutil is an open source win32 utility library, it includes many common class.
-such as io, conf, net, thread, process etc. so you can easily use this lib.
+such as io, conf, net, thread, process etc. so this library can help you in many cases.
 
 #How to use ?
 
@@ -14,7 +14,7 @@ in xx.cpp
 
 ->#pragma comment(lib, "/path/winutil")
 
-The following is a simple C/S demo via wintuil:
+The following is a simple C/S demo via winutil:
 
 client.cpp 
 
