@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="io">
+      <UniqueIdentifier>{b2fd5b1f-2f31-4cf5-9b19-edac20770b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="conf">
+      <UniqueIdentifier>{41892b38-499d-40a9-93d9-4c8370453dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thread">
+      <UniqueIdentifier>{53f7766b-a654-44b2-81e9-53c3ee5974a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="process">
+      <UniqueIdentifier>{77da14fe-3d7f-4656-9b4e-d2c3d7bd42ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tool">
+      <UniqueIdentifier>{05ecc848-eeec-476e-b3f3-98e14171f1ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pub">
+      <UniqueIdentifier>{5f8fbfab-7d7c-4aa7-ad1b-afc78a682c3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{64604cfb-b178-41c8-817d-cbe388b3ca60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{27eaf3b2-248e-47e6-b781-9583189b7f16}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="io\File.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="conf\IniHelper.cpp">
+      <Filter>conf</Filter>
+    </ClCompile>
+    <ClCompile Include="net\AsyncServer.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\ClientSocket.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\ServerSocket.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\Socket.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="net\SocketException.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="tool\APIHook.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="tool\PE.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="tool\Toolhelp.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="process\Process.cpp">
+      <Filter>process</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\CountDownLatch.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\CriticalSection.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Event.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Mutex.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Semaphore.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="thread\Thread.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Delegate.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="io\File.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="conf\IniHelper.h">
+      <Filter>conf</Filter>
+    </ClInclude>
+    <ClInclude Include="net\AsyncServer.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\ClientSocket.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\ServerSocket.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\Socket.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="net\SocketException.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="pub\cmn.h">
+      <Filter>pub</Filter>
+    </ClInclude>
+    <ClInclude Include="tool\APIHook.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="tool\PE.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="tool\Toolhelp.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="process\Process.h">
+      <Filter>process</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\CountDownLatch.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\CriticalSection.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\Event.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\IRunnable.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\Mutex.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\Semaphore.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="thread\Thread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ConcurrentHashMap.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Delegate.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\FastBuffer.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="winutil.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
