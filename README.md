@@ -1,7 +1,7 @@
 
 #Win32 Utility Library
 
-winutility is a open source win32 utility library, it includes many common class.
+winutil is an open source win32 utility library, it includes many common class.
 such as io, conf, net, thread, process etc. so you can easily use this lib.
 
 #How to use ?
