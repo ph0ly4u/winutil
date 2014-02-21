@@ -17,6 +17,7 @@ in xx.cpp
 The following is a simple C/S demo via wintuil:
 
 client.cpp 
+
 	ClientSocket cltSocket;
 
 	// create this socket
@@ -37,14 +38,22 @@ client.cpp
 	getchar();
 
 server.cpp
+
 	static uint32 OnRead(void * pSender, void * pObject) 
+
 	{
 		AsyncServer * _this = static_cast<AsyncServer*>(pSender);
+
 		SocketBase * pSockBase = static_cast<SocketBase*>(pObject);
+
 		std::string data = "server response!";
+
 		char buf[1024] = {0};
+
 		pSocketBase->Recv(buf, 1024);
+
 		pSockBase->Send(data.data(), data.size());
+
 		return 0;
 	}
 
