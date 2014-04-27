@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "Semaphore.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 
 Semaphore::Semaphore() : m_nCount(1)
 {
@@ -64,4 +64,4 @@ void Semaphore::Release()
 	++m_nCount;
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

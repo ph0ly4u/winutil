@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "Mutex.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 
 Mutex::Mutex() : m_hMutex(NULL), m_bSignal(false)
 {
@@ -51,4 +51,4 @@ void Mutex::UnLock()
 	ReleaseMutex(m_hMutex);
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

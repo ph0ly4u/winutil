@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "CountDownLatch.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 CountDownLatch::CountDownLatch() : m_pSem(new Semaphore(0, 1))
 {
 	m_pSem->Acquire();
@@ -28,4 +28,4 @@ void CountDownLatch::Await()
 	m_pSem->Acquire();
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 using namespace std;
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(tool)
 Toolhelp::Toolhelp(void) : m_hSnapshot(NULL), m_dwRefer(0)
 {
 }
@@ -196,4 +196,4 @@ BOOL Toolhelp::EnablePrivilege(PCTSTR szPrivilege, BOOL fEnable) {
 	return(fOk);
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

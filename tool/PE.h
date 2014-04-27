@@ -6,7 +6,7 @@
 #include <map>
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(tool)
 //
 // 基础类 -> PE PE文件操作类
 // Copyright(c) ph0ly 2013.07 . All rights reserved.
@@ -96,4 +96,4 @@ private:
 
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

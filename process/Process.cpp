@@ -1,6 +1,6 @@
 #define DLL_EXPORTS
 #include "Process.h"
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(process)
 
 //#define __DEBUG__
 
@@ -536,4 +536,4 @@ Process::Destroy()
 	return true;
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

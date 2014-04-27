@@ -4,7 +4,7 @@
 #include <string>
 #include "Socket.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 /**
  * Copyright (c) ph0ly 2014. All rights reserved.
  */ 
@@ -33,4 +33,4 @@ protected:
 
 
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END

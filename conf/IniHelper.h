@@ -4,7 +4,7 @@
 #include <map>
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(conf)
 // 
 // 基础类 -> IniHelper INI文件操作类
 // Copyright (c) ph0ly 2013.07. All rights reserved.
@@ -21,5 +21,5 @@ public:
 	static std::vector<std::string> GetProfileSectionNodes(std::string strPath, std::string strNode);
 
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END
 

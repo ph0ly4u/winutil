@@ -2,7 +2,7 @@
 #include <exception>
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 class PH0LY SocketException : private std::exception
 {
 public:
@@ -14,4 +14,4 @@ public:
 
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

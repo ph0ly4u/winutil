@@ -3,7 +3,8 @@
 #include <process.h>
 
 using namespace std;
-NAMESPACE_BEGIN
+using namespace ph0ly::util;
+NAMESPACE_PH0LY_BEGIN(thread)
 
 ConcurrentHashMap<HANDLE, Thread*> Thread::m_hmThreads;
 
@@ -87,4 +88,4 @@ uint32 STDCALL Thread::ThreadProc(void * pv)
 	return uRet;
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

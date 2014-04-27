@@ -5,7 +5,7 @@
 #include "../util/ConcurrentHashMap.h"
 #include "IRunnable.h"
 #include "CountDownLatch.h"
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 /**
  * \brief class Thread
  * you must specify IRunnable object, 
@@ -15,10 +15,10 @@ class PH0LY Thread
 {
 public:
 	Thread();
-	Thread(IRunnable * ptr);
+	Thread(thread::IRunnable * ptr);
 	virtual ~Thread();
 
-	void SetRunnable(IRunnable * ptr) {
+	void SetRunnable(thread::IRunnable * ptr) {
 		m_pRun = ptr;
 	}
 	void Start();
@@ -50,12 +50,12 @@ private:
 	HANDLE m_hThread;
 	bool m_bRun;
 	bool m_bShutdown;
-	IRunnable * m_pRun;
-	CountDownLatch * m_pSignal;
+	thread::IRunnable * m_pRun;
+	thread::CountDownLatch * m_pSignal;
 
-	static ConcurrentHashMap<HANDLE, Thread*> m_hmThreads;
+	static util::ConcurrentHashMap<HANDLE, Thread*> m_hmThreads;
 
 };
 
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

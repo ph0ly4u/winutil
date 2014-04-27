@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "SocketException.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 SocketException::SocketException(void)
 {
 }
@@ -14,4 +14,4 @@ SocketException::SocketException(const char * const & pMsg) : exception(pMsg)
 SocketException::~SocketException(void)
 {
 }
-NAMESPACE_END
+NAMESPACE_PH0LY_END

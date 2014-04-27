@@ -2,7 +2,7 @@
 #pragma once
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 class IRunnable
 {
 public:
@@ -13,4 +13,4 @@ public:
 	}
 
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END

@@ -29,6 +29,9 @@
     <Filter Include="util">
       <UniqueIdentifier>{27eaf3b2-248e-47e6-b781-9583189b7f16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{8b8b0795-c7e1-43e4-8404-c23aed9a832b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="io\File.cpp">
@@ -84,6 +87,9 @@
     </ClCompile>
     <ClCompile Include="util\Delegate.cpp">
       <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\Bitmap.cpp">
+      <Filter>graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,10 @@
       <Filter>util</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="graphics\Bitmap.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="winutil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="winutil.rc">

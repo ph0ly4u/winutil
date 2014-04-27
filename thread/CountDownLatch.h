@@ -4,7 +4,7 @@
 #include "../pub/cmn.h"
 #include "Semaphore.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 class PH0LY CountDownLatch
 {
 public:
@@ -20,4 +20,4 @@ private:
 
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

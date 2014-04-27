@@ -4,7 +4,7 @@
 #include <memory>
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(io)
 //
 // 基础类 -> File 文件类 
 // Copyright (c) ph0ly 2013.03.13 . All rights reserved.
@@ -62,5 +62,5 @@ public:
 	/// 保存文本文件
 	static bool SaveAllText( const char* lpszPath, const std::string& strInput );
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END
 

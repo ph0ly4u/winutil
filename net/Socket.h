@@ -3,7 +3,7 @@
 #include <string>
 #include "SocketException.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 typedef struct PH0LY tagEndpoint
 {
 	std::string ip;
@@ -95,4 +95,4 @@ private:
 	static void Init();
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

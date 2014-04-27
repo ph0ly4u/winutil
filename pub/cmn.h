@@ -21,6 +21,9 @@
 #define NAMESPACE_BEGIN namespace ph0ly {
 #define NAMESPACE_END	} 
 
+#define NAMESPACE_PH0LY_BEGIN(name) NAMESPACE_BEGIN namespace name {
+#define NAMESPACE_PH0LY_END	 } }
+
 #ifndef DLL_EXPORTS
 #define PH0LY __declspec(dllimport)
 #else

@@ -1,7 +1,7 @@
 #pragma once
 #include "Socket.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 class PH0LY ClientSocket : private Socket
 {
 public:
@@ -21,4 +21,4 @@ protected:
 
 
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END

@@ -3,7 +3,7 @@
 #include <TlHelp32.h>
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(tool)
 //
 // 基础类 -> Toolhelp 系统快照类
 // Copyright (c) ph0ly 2013.05 - 2013.07 . All rights reserved.
@@ -46,5 +46,5 @@ private:
 
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END
 

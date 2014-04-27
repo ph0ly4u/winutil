@@ -2,7 +2,7 @@
 #pragma once
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(util)
 /**
  * \brief Fast Buffer, based on object
  * Copyright (c) ph0ly 2014. All rights reserved.
@@ -201,4 +201,4 @@ inline void FastBuffer<_Myt>::_Copy(const _Myt* pBuf, uint32 length, uint32 capa
 	memcpy_s((char*)m_pBuf, capacity * sizeof(_Myt), (char*)pBuf, m_uLength * sizeof(_Myt));
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

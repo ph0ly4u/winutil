@@ -5,7 +5,7 @@
 #include "../thread/Mutex.h"
 #include <hash_map>
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(util)
 /** 
  * \brief Concurrent Hash Map
  */ 
@@ -35,7 +35,7 @@ public:
 
 private:
 	std::hash_map<_Key, _Value> m_hm;
-	Mutex m_mutex;
+	thread::Mutex m_mutex;
 };
 
 template <class _Key, class _Value> 
@@ -138,4 +138,4 @@ inline typename ConcurrentHashMap<_Key, _Value>::HashMapConstIterator Concurrent
 	return m_hm.end();
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

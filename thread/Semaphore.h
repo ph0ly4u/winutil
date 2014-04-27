@@ -2,7 +2,7 @@
 
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 class PH0LY Semaphore 
 {
 public:
@@ -33,4 +33,4 @@ private:
 
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

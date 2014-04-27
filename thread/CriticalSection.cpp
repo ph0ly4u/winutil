@@ -2,7 +2,7 @@
 #define DLL_EXPORTS
 #include "CriticalSection.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 	
 CriticalSection::CriticalSection()
 {
@@ -37,4 +37,4 @@ void CriticalSection::Leave()
 	LeaveCriticalSection(&m_cs);
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

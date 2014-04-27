@@ -3,7 +3,7 @@
 #include <string>
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(tool)
 //
 // ª˘¥°¿‡ -> APIHook API¿πΩÿ¿‡
 // Copyright (c) ph0ly 2013.06-2013.07 . All rights reserved.
@@ -41,5 +41,5 @@ private:
 	std::string m_strModule;
 
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END
 

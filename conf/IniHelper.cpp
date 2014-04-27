@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "IniHelper.h"
 #include <windows.h>
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(conf)
 
 IniHelper::IniHelper(void)
 {
@@ -37,4 +37,4 @@ std::vector<std::string> IniHelper::GetProfileSectionNodes(std::string strPath, 
 	return tmp;
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

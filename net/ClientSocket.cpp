@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "ClientSocket.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 ClientSocket::ClientSocket(void)
 {
 }
@@ -24,4 +24,4 @@ bool ClientSocket::Create(SockType type)
 	return Socket::Create(m_endpoint.ip, m_endpoint.port, type);
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

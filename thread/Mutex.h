@@ -3,7 +3,7 @@
 #include "../pub/cmn.h"
 #include "../util/Delegate.h"
 #include "CriticalSection.h"
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 /**
  * \brief Mutex impl
  */
@@ -30,4 +30,4 @@ private:
 	bool m_bSignal;
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

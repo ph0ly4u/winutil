@@ -3,7 +3,7 @@
 #include "Socket.h"
 
 #pragma comment(lib, "ws2_32")
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 
 bool Socket::m_bFirstTime = true;
 
@@ -165,4 +165,4 @@ size_t SocketBase::Recv(char * buf, size_t bufLen) const
 }
 
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

@@ -75,6 +75,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="conf\IniHelper.cpp" />
+    <ClCompile Include="graphics\Bitmap.cpp" />
     <ClCompile Include="io\File.cpp" />
     <ClCompile Include="net\AsyncServer.cpp" />
     <ClCompile Include="net\ClientSocket.cpp" />
@@ -95,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="conf\IniHelper.h" />
+    <ClInclude Include="graphics\Bitmap.h" />
     <ClInclude Include="io\File.h" />
     <ClInclude Include="net\AsyncServer.h" />
     <ClInclude Include="net\ClientSocket.h" />
@@ -117,6 +119,7 @@
     <ClInclude Include="util\ConcurrentHashMap.h" />
     <ClInclude Include="util\Delegate.h" />
     <ClInclude Include="util\FastBuffer.h" />
+    <ClInclude Include="winutil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="winutil.rc" />

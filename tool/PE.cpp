@@ -6,7 +6,7 @@
 #include <ImageHlp.h>
 using namespace std;
 #pragma comment(lib, "ImageHlp")
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(tool)
 
 PE::PE(void)
 {
@@ -382,4 +382,4 @@ bool PE::Dump( const char * pszFilePath )
 	return true;
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

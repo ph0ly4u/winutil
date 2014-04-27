@@ -4,9 +4,12 @@
 #include "../thread/Mutex.h"
 #include <vector>
 #include <list>
+using namespace ph0ly::thread;
+using namespace ph0ly::util;
+NAMESPACE_PH0LY_BEGIN(net)
 
-NAMESPACE_BEGIN
-class EventSource;
+class ph0ly::util::EventSource;
+
 /**
  * \brief class AsyncServer
  * I/O multiplexing, use WSAEventSelect implements AsyncServer
@@ -36,11 +39,15 @@ public:
 	 */
 	void Stop();
 
+	void SetUserData(DWORD dwKey, void * pVal) { m_hmUserDatas[dwKey] = pVal; }
+	void * GetUserData(DWORD dwKey) const { if ( m_hmUserDatas.find(dwKey) == m_hmUserDatas.end() ) return NULL; return m_hmUserDatas.at(dwKey); }
+
 private:
 	uint32 DispatchEvent(void * pv);
 
 	std::hash_map<AsyncEvent, EventSource> m_hmEventHandlers;
 	std::hash_map<SOCKET, SocketBase> m_hmSocketBases;
+	std::hash_map<DWORD, void*> m_hmUserDatas;
 	
 	bool m_bShutdown;
 	Thread * m_pThread;
@@ -63,4 +70,4 @@ private:
 
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

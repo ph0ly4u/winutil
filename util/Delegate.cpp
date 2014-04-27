@@ -1,7 +1,7 @@
 #define DLL_EXPORTS
 #include "Delegate.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(util)
 
 EventSource::EventSource(FnType pFn) : Delegate(pFn) { m_hsCallbacks.insert(pFn); }
 
@@ -36,4 +36,4 @@ void EventSource::Clean()
 	m_hsCallbacks.clear();
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <memory>
 #include "../pub/cmn.h"
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(process)
 #define MAXWAITFORPROCESSTIME 1000 * 5  // 最大超时
 #define MAXOUTPUTSIZE		  1024 * 5  // 
 #define MAX_PIPE_INPUT_COUNT  1024 * 20 // 最大20K管道输入数据量，防止超过最大管道数据量导致，WriteFile阻塞无法返回
@@ -109,4 +109,4 @@ private:
 
 	DWORD m_dwExitCode;
 };
-NAMESPACE_END
+NAMESPACE_PH0LY_END

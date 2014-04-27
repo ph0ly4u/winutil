@@ -2,7 +2,7 @@
 #include <WinSock2.h>
 #include "ServerSocket.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(net)
 
 #define PASSERT(x) if ( !(x) ) return false;
 ServerSocket::ServerSocket(void)
@@ -49,4 +49,4 @@ bool ServerSocket::QuickStart(const Endpoint& endpoint)
 // 	return true;
 // }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

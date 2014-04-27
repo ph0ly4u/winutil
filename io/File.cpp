@@ -3,7 +3,7 @@
 #include <iostream>
 #include <windows.h>
 #include <fstream>
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(io)
 using namespace std;
 
 File::File(void)
@@ -252,7 +252,7 @@ bool File::SaveAllText(const char* lpszPath, const std::string& strInput)//, Mod
 	ofs.write(strInput.data(), strInput.size());
 	return true;
 }
-NAMESPACE_END
+NAMESPACE_PH0LY_END
 //bool File::ReadAll( const char* lpszPath, char** lpszOutput, size_t& uBuffer )
 //{
 //	if (lpszPath == NULL || lpszOutput == NULL )

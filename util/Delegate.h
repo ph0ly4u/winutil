@@ -4,7 +4,7 @@
 #include <hash_set>
 #include <algorithm>
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(util)
 template <class Fn>
 class Delegate
 {
@@ -53,4 +53,4 @@ private:
 	std::hash_set<FnType> m_hsCallbacks;
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

@@ -6,7 +6,7 @@
 #include <ImageHlp.h>
 #pragma comment(lib, "ImageHlp")
 //#define __DEBUG__
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(tool)
 
 APIHook::APIHook(LPCSTR lpszModule, LPCSTR lpszCurrentModule, LPCSTR lpszFuncName, PROC pfnHook)
 {
@@ -149,4 +149,4 @@ void APIHook::ReplaceIATInOneMod(PROC pfnOrig, PROC pfnNew)
 	CloseHandle(hSnapshot);
 }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

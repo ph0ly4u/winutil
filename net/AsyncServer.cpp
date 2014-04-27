@@ -2,8 +2,8 @@
 #define DLL_EXPORTS 
 #include "AsyncServer.h"
 #include "../util/Delegate.h"
-
-NAMESPACE_BEGIN
+using namespace ph0ly::util;
+NAMESPACE_PH0LY_BEGIN(net)
 AsyncServer::AsyncServer(void) : m_bShutdown(false)
 {
 	
@@ -174,4 +174,4 @@ uint32 AsyncServer::Processor::Run(void * pv)
 // 	
 // }
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END

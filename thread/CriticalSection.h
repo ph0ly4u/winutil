@@ -2,7 +2,7 @@
 
 #include "../pub/cmn.h"
 
-NAMESPACE_BEGIN
+NAMESPACE_PH0LY_BEGIN(thread)
 class PH0LY CriticalSection
 {
 public:
@@ -19,4 +19,4 @@ private:
 	
 };
 
-NAMESPACE_END
+NAMESPACE_PH0LY_END
