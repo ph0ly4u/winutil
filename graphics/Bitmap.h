@@ -26,11 +26,20 @@ public:
 	void Blt(HDC hdc, DWORD dwLeft = 0, DWORD dwTop = 0);
 	void StretchBlt(HDC hdc, DWORD dwWidth, DWORD dwHeight, DWORD dwLeft = 0, DWORD dwTop = 0);
 
+	/**
+	 * \brief Crop the Bitmap
+	 */
 	void Crop(DWORD dwLeft, DWORD dwTop, DWORD dwRight, DWORD dwBottom);
 
 	void Copy(const Bitmap& rhs);
-	
+	/**
+	 * \brief Encode the bitmap to byte buffer
+	 * when you never use this buffer, invoke FreeMemory to free memory of the buffer.
+	 */
 	bool Encode(unsigned char *& pOutBuffer, int& count);
+	/**
+	 * \brief create a bitmap from memory
+	 */ 
 	bool Decode(const unsigned char * pBuffer, int count);
 
 	void FreeMemory(void * pBuffer);
@@ -40,7 +49,10 @@ public:
 
 	void SetWidth(DWORD dwWidth) { m_dwWidth = dwWidth; }
 	void SetHeight(DWORD dwHeight) { m_dwHeight = dwHeight; }
-
+	/**
+	 * \brief Save this bitmap to a specified path
+	 * it will save as a 24 bit bmp file
+	 */ 
 	void Save(const char* path);
 	void Load(const char* path);
 	

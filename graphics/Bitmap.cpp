@@ -26,11 +26,15 @@ Bitmap::Bitmap(HBITMAP hBitmap)
 
 Bitmap::Bitmap(const Bitmap& rhs)
 {
+	if (this == &rhs)
+		return;
 	FromHBITMAP(rhs.m_hBitmap);
 }
 
 const Bitmap& Bitmap::operator = (const Bitmap& rhs)
 {
+	if (this == &rhs)
+		return *this;
 	FromHBITMAP(rhs.m_hBitmap);
 	return *this;
 }
@@ -82,7 +86,7 @@ void Bitmap::Blt(HDC hdc, DWORD dwLeft /* = 0 */, DWORD dwTop /* = 0 */)
 	HDC hDC = GetDC(NULL);
 	HDC hdcMem = CreateCompatibleDC(hDC);
 	SelectObject(hdcMem, m_hBitmap);
-	BitBlt(hdc, 0, 0, m_dwWidth, m_dwHeight, hdcMem, 0, 0, SRCCOPY);
+	BitBlt(hdc, dwLeft, dwTop, m_dwWidth, m_dwHeight, hdcMem, 0, 0, SRCCOPY);
 	DeleteDC(hdcMem);
 	ReleaseDC(NULL, hDC);
 }
