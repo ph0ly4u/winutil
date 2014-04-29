@@ -8,11 +8,11 @@ such as io, conf, net, thread, process etc. so you can easily use this lib.
 
 you just compile this in visual studio, suggest vs2010.
 
-in xx.cpp
+	in xx.cpp
 		\#include "/path/winutil.h"
 		\#pragma comment(lib, "/path/winutil")
 
-The following is a simple C/S demo via wintuil:
+The following is a simple C/S demo via winutil:
 
 	client.cpp 
 		ClientSocket cltSocket;
