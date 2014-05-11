@@ -26,6 +26,8 @@ public:
 	void Blt(HDC hdc, DWORD dwLeft = 0, DWORD dwTop = 0);
 	void StretchBlt(HDC hdc, DWORD dwWidth, DWORD dwHeight, DWORD dwLeft = 0, DWORD dwTop = 0);
 
+	bool GetDIBBits(BYTE *& pOutBuffer, DWORD& count);
+
 	/**
 	 * \brief Crop the Bitmap
 	 */
@@ -46,15 +48,19 @@ public:
 
 	DWORD GetWidth() const { return m_dwWidth; }
 	DWORD GetHeight() const { return m_dwHeight; }
+	WORD GetBitCount() const { return m_dwBitCount; }
 
 	void SetWidth(DWORD dwWidth) { m_dwWidth = dwWidth; }
 	void SetHeight(DWORD dwHeight) { m_dwHeight = dwHeight; }
+	void SetBitCount(WORD wBitCount) { m_dwBitCount = wBitCount; }
+
 	/**
 	 * \brief Save this bitmap to a specified path
 	 * it will save as a 24 bit bmp file
 	 */ 
-	void Save(const char* path);
-	void Load(const char* path);
+	bool Save(const char* path);
+	bool SaveAs(const char* path, WORD dwBitCount);
+	bool Load(const char* path);
 	
 	operator HBITMAP ();
 
@@ -63,6 +69,7 @@ private:
 
 	DWORD m_dwWidth;
 	DWORD m_dwHeight;
+	WORD m_dwBitCount;
 	HBITMAP m_hBitmap;
 
 };

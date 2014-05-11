@@ -4,27 +4,27 @@
 
 NAMESPACE_PH0LY_BEGIN(graphics)
 
-Bitmap::Bitmap() : m_dwWidth(0), m_dwHeight(0), m_hBitmap(NULL)
+Bitmap::Bitmap() : m_dwWidth(0), m_dwHeight(0), m_hBitmap(NULL), m_dwBitCount(24)
 {
 
 }
 
-Bitmap::Bitmap(DWORD dwWidth, DWORD dwHeight) : m_dwWidth(dwWidth), m_dwHeight(dwHeight), m_hBitmap(NULL)
+Bitmap::Bitmap(DWORD dwWidth, DWORD dwHeight) : m_dwWidth(dwWidth), m_dwHeight(dwHeight), m_hBitmap(NULL), m_dwBitCount(24)
 {
 
 }
 
-Bitmap::Bitmap(const BYTE * pBuffer, DWORD dwSize) 
+Bitmap::Bitmap(const BYTE * pBuffer, DWORD dwSize) : m_dwBitCount(24)
 {
 	Decode(pBuffer, dwSize);
 }
 
-Bitmap::Bitmap(HBITMAP hBitmap)
+Bitmap::Bitmap(HBITMAP hBitmap) : m_dwBitCount(24)
 {
 	FromHBITMAP(hBitmap);
 }
 
-Bitmap::Bitmap(const Bitmap& rhs)
+Bitmap::Bitmap(const Bitmap& rhs) 
 {
 	if (this == &rhs)
 		return;
@@ -59,6 +59,7 @@ void Bitmap::FromHBITMAP(HBITMAP hBitmap)
 	GetObjectA(hBitmap, sizeof(BITMAP), &bm);
 	m_dwWidth = bm.bmWidth;
 	m_dwHeight = bm.bmHeight;
+	m_dwBitCount = bm.bmBitsPixel;
 
 	char * pBuf = new char[bm.bmWidthBytes*bm.bmHeight];
 	GetBitmapBits(hBitmap, bm.bmWidthBytes*bm.bmHeight, pBuf);
@@ -107,11 +108,12 @@ void Bitmap::Crop(DWORD dwLeft, DWORD dwTop, DWORD dwRight, DWORD dwBottom)
 	HDC hdcSrc = CreateCompatibleDC(hDC);
 	HDC hdcTarget = CreateCompatibleDC(hDC);
 	HBITMAP hBitmap = CreateCompatibleBitmap(hDC, dwRight-dwLeft, dwBottom-dwTop);
-	m_dwWidth = dwRight-dwLeft;
-	m_dwHeight = dwBottom - dwTop;
 	SelectObject(hdcSrc, m_hBitmap);
 	SelectObject(hdcTarget, hBitmap);
-	::StretchBlt(hdcTarget, 0, 0, m_dwWidth, m_dwHeight, hdcSrc, dwLeft, dwTop, dwRight-dwLeft, dwBottom-dwTop, SRCCOPY);
+	::BitBlt(hdcTarget, 0, 0, dwRight-dwLeft, dwBottom-dwTop, hdcSrc, dwLeft, dwTop, SRCCOPY);
+	//::StretchBlt(hdcTarget, 0, 0, dwRight-dwLeft, dwBottom-dwTop, hdcSrc, dwLeft, dwTop, m_dwWidth, m_dwHeight, SRCCOPY);
+	m_dwWidth = dwRight-dwLeft;
+	m_dwHeight = dwBottom - dwTop;
 	DeleteObject(m_hBitmap);
 	m_hBitmap = hBitmap;
 	DeleteDC(hdcSrc);
@@ -124,6 +126,32 @@ void Bitmap::Copy(const Bitmap& rhs)
 	FromHBITMAP(rhs.m_hBitmap);
 }
 
+bool Bitmap::GetDIBBits(BYTE *& pOutBuffer, DWORD& count)
+{
+	if (!m_hBitmap)
+		return false;
+
+	HDC hdc = GetDC(NULL);
+
+	BITMAPINFO bmpInfo = {0};
+	bmpInfo.bmiHeader.biBitCount = 24;
+	bmpInfo.bmiHeader.biWidth = m_dwWidth;
+	bmpInfo.bmiHeader.biHeight = m_dwHeight;
+	bmpInfo.bmiHeader.biPlanes = 1;
+	DWORD dwSize = ((bmpInfo.bmiHeader.biWidth * bmpInfo.bmiHeader.biBitCount) + 31)/32*4 * bmpInfo.bmiHeader.biHeight;
+	bmpInfo.bmiHeader.biSizeImage = ((bmpInfo.bmiHeader.biWidth * bmpInfo.bmiHeader.biBitCount) + 31)/32*4 * bmpInfo.bmiHeader.biHeight;
+	bmpInfo.bmiHeader.biSize=sizeof(BITMAPINFOHEADER);
+
+	BITMAP bm;
+	GetObjectA(m_hBitmap, sizeof(BITMAP), &bm);
+	BYTE * pBuffer = new BYTE[bm.bmWidthBytes*bm.bmHeight]; 
+	GetDIBits(hdc, m_hBitmap, 0, bmpInfo.bmiHeader.biHeight, pBuffer, &bmpInfo, DIB_RGB_COLORS);
+	pOutBuffer = pBuffer;
+	count = bm.bmWidthBytes*bm.bmHeight;
+
+	return true;
+}
+
 bool Bitmap::Encode(unsigned char *& pOutBuffer, int& count)
 {
 	BITMAP bm;
@@ -133,7 +161,7 @@ bool Bitmap::Encode(unsigned char *& pOutBuffer, int& count)
 	PBITMAPINFOHEADER pInfoHeader = reinterpret_cast<PBITMAPINFOHEADER>(pOutBuffer);
 	pInfoHeader->biWidth = m_dwWidth;
 	pInfoHeader->biHeight = m_dwHeight;
-	pInfoHeader->biBitCount = 24;
+	pInfoHeader->biBitCount = m_dwBitCount;
 	GetBitmapBits(m_hBitmap, bm.bmWidthBytes*bm.bmHeight, (char*)pOutBuffer+sizeof(BITMAPINFOHEADER));
 	count = bm.bmWidthBytes * bm.bmHeight+sizeof(BITMAPINFOHEADER);
 
@@ -162,15 +190,20 @@ void Bitmap::FreeMemory(void * pBuffer)
 		delete [] pBuffer;
 }
 
-void Bitmap::Save(const char* path)
+bool Bitmap::Save(const char* path)
+{
+	return SaveAs(path, 24);
+}
+
+bool Bitmap::SaveAs(const char* path, WORD dwBitCount)
 {
 	// Convert To DIB
 	HDC hdc = GetDC(NULL);
-	DWORD dwRowLength = (m_dwWidth*24+31) / 32 * 4;
+	DWORD dwRowLength = (m_dwWidth*dwBitCount+31) / 32 * 4;
 	BITMAPINFOHEADER bitmapInfoHeader = {0};
 	bitmapInfoHeader.biWidth = m_dwWidth;
 	bitmapInfoHeader.biHeight = m_dwHeight;
-	bitmapInfoHeader.biBitCount = 24;
+	bitmapInfoHeader.biBitCount = dwBitCount;
 	bitmapInfoHeader.biPlanes = 1;
 	bitmapInfoHeader.biSize = sizeof(BITMAPINFOHEADER);
 	bitmapInfoHeader.biSizeImage = dwRowLength * m_dwHeight;
@@ -193,7 +226,7 @@ void Bitmap::Save(const char* path)
 		DeleteDC(hdcSrc);
 		DeleteObject(hBitmap);
 		ReleaseDC(NULL, hdc);
-		return;
+		return false;
 	}
 	fwrite(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, fp);
 	fwrite(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, fp);
@@ -205,16 +238,18 @@ void Bitmap::Save(const char* path)
 	DeleteDC(hdcSrc);
 	DeleteObject(hBitmap);
 	ReleaseDC(NULL, hdc);
+
+	return true;
 }
 
-void Bitmap::Load(const char* path)
+bool Bitmap::Load(const char* path)
 {
 	if (m_hBitmap)
 		Destroy();
 
 	HANDLE hFile = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL);
 	if (INVALID_HANDLE_VALUE == hFile) {
-		return;
+		return false;
 	}
 	DWORD dwSize = GetFileSize(hFile, NULL);
 	char * pBuffer = new char[dwSize];
@@ -222,13 +257,13 @@ void Bitmap::Load(const char* path)
 	if (!ReadFile(hFile, pBuffer, dwSize, &dwBytesRead, NULL)) {
 		CloseHandle(hFile);
 		delete [] pBuffer;
-		return;
+		return false;
 	}
 	CloseHandle(hFile);
 	BITMAPFILEHEADER * pBitmapFileHeader = reinterpret_cast<PBITMAPFILEHEADER>(pBuffer);
 	if (pBitmapFileHeader->bfType != 0x4d42 || pBitmapFileHeader->bfSize != dwSize) {
 		delete [] pBuffer;
-		return;
+		return false; 
 	}
 	HDC hdc = GetDC(NULL);
 	HBITMAP hBitmap = CreateDIBitmap(hdc, (PBITMAPINFOHEADER)(pBuffer+sizeof(BITMAPFILEHEADER)), CBM_INIT, (pBuffer+pBitmapFileHeader->bfOffBits), (BITMAPINFO*)(pBitmapFileHeader+1), DIB_RGB_COLORS);
@@ -236,6 +271,8 @@ void Bitmap::Load(const char* path)
 	delete [] pBuffer;
 
 	ReleaseDC(NULL, hdc);
+
+	return true;
 }
 
 NAMESPACE_PH0LY_END
