@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "IList.h"
-#include "exception.h"
 #include <vector>
 
 template<class _Myt>
@@ -101,21 +100,35 @@ size_t ArrayList<_Myt>::size() const
 template<class _Myt>
 _Myt& ArrayList<_Myt>::get(int index)
 {
-	if (!IsValidIndex(index))
+	try
 	{
-		throw CExceptionEx();
+		if (!IsValidIndex(index))
+		{
+			throw std::exception();
+		}
+		return m_pList->at(index);
 	}
-	return m_pList->at(index);
+	catch (...)
+	{
+		std::cerr << "ERROR! Invalid parameter" << std::endl;
+	}	
 }
 
 template<class _Myt>
 const _Myt& ArrayList<_Myt>::get(int index) const
 {
-	if (!IsValidIndex(index))
+	try
 	{
-		throw CExceptionEx();
+		if (!IsValidIndex(index))
+		{
+			throw std::exception();
+		}
+		return m_pList->at(index);
 	}
-	return m_pList->at(index);
+	catch (...)
+	{
+		std::cout << "ERROR! Invalid parameter" << std::endl;
+	}	
 }
 
 template<class _Myt>
@@ -164,21 +177,33 @@ bool ArrayList<_Myt>::setAt(int index, _Myt element)
 template<class _Myt>
 const _Myt& ArrayList<_Myt>::operator[] (int index) const
 {
-	if (!IsValidIndex(index))
+	try
 	{
-		throw CExceptionEx();
+		if (!IsValidIndex(index))
+		{
+			throw std::exception();
+		}
+		return m_pList->at(index);
 	}
-
-	return m_pList->at(index);
+	catch (...)
+	{
+		std::cerr << "ERROR! Invalid parameter" << std::endl;
+	}	
 }
 
 template<class _Myt>
 _Myt& ArrayList<_Myt>::operator[] (int index)
 {
-	if (!IsValidIndex(index))
+	try
 	{
-		throw CExceptionEx();
+		if (!IsValidIndex(index))
+		{
+			throw std::exception();
+		}
+		return m_pList->at(index);
 	}
-
-	return m_pList->at(index);
+	catch (...)
+	{
+		std::cerr << "ERROR! Invalid parameter" << std::endl;
+	}	
 }
