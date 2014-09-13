@@ -49,7 +49,7 @@ ArrayList<_Myt>::ArrayList(const ArrayList<_Myt>& sArrayList)
 template<class _Myt>
 ArrayList<_Myt>::~ArrayList(void)
 {
-	delete[] m_pList;
+	delete m_pList;
 	m_pList = NULL;
 }
 
