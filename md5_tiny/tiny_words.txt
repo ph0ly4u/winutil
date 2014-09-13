@@ -1,0 +1,3 @@
+you can use it to check the md5 code of much files's which at the same folder, but their md5 code must at the same
+
+>md5_tiny check_folder_path md5(little) result_txt_name

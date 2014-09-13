@@ -1,0 +1,21 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   md5_tiny/md5_tiny.v11.suo
+#	new file:   md5_tiny/md5_tiny/ReadMe.txt
+#	new file:   md5_tiny/md5_tiny/md5.cpp
+#	new file:   md5_tiny/md5_tiny/md5.h
+#	new file:   md5_tiny/md5_tiny/md5_tiny.cpp
+#	new file:   md5_tiny/md5_tiny/md5_tiny.vcxproj
+#	new file:   md5_tiny/md5_tiny/md5_tiny.vcxproj.filters
+#	new file:   md5_tiny/md5_tiny/md5_tiny.vcxproj.user
+#	new file:   md5_tiny/md5_tiny/stdafx.cpp
+#	new file:   md5_tiny/md5_tiny/stdafx.h
+#	new file:   md5_tiny/md5_tiny/targetver.h
+#	new file:   md5_tiny/tiny_words.txt
+#
+
