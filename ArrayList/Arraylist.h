@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "IList.h"
+#include "exception.h"
 #include <vector>
 
 template<class _Myt>
@@ -8,7 +9,9 @@ class ArrayList implements IList<_Myt>
 {
 public:
 	ArrayList();
+	ArrayList(const ArrayList<_Myt>&);
 	virtual ~ArrayList();
+
 public:
 	virtual bool add(const _Myt& obj);
 	virtual void clear();
@@ -16,12 +19,17 @@ public:
 	const _Myt& get(int index) const;
 	_Myt& get(int index);
 	bool isEmpty();
+	bool isEmpty() const;
 	virtual size_t size();
+	virtual size_t size() const;
 	virtual bool setAt(int index, _Myt element);
 
 	virtual const _Myt& operator[] (int index) const;
 	virtual _Myt& operator[] (int index);
 
+private:
+	inline bool IsValidIndex(int index);
+	inline bool IsValidIndex(int index) const;
 private:
 	std::vector<_Myt> * m_pList;
 };
@@ -30,7 +38,12 @@ template<class _Myt>
 ArrayList<_Myt>::ArrayList(void)
 {
 	m_pList = new std::vector<_Myt>();
-	m_pList->clear();
+}
+
+template<class _Myt>
+ArrayList<_Myt>::ArrayList(const ArrayList<_Myt>& sArrayList)
+{
+	m_pList = new std::vector<_Myt>(*(sArrayList.m_pList));
 }
 
 template<class _Myt>
@@ -41,10 +54,37 @@ ArrayList<_Myt>::~ArrayList(void)
 }
 
 template<class _Myt>
+bool ArrayList<_Myt>::IsValidIndex(int index)
+{
+	if (index < 0 || index >= m_pList->size())
+	{
+		return false;
+	}
+	return true;	
+}
+
+template<class _Myt>
+bool ArrayList<_Myt>::IsValidIndex(int index) const
+{
+	if (index < 0 || index >= m_pList->size())
+	{
+		return false;
+	}
+	return true;	
+}
+
+template<class _Myt>
 bool ArrayList<_Myt>::isEmpty()
 {
 	return m_pList->empty();
 }
+
+template<class _Myt>
+bool ArrayList<_Myt>::isEmpty() const
+{
+	return m_pList->empty();
+}
+
 
 template<class _Myt>
 size_t ArrayList<_Myt>::size()
@@ -53,17 +93,27 @@ size_t ArrayList<_Myt>::size()
 }
 
 template<class _Myt>
+size_t ArrayList<_Myt>::size() const
+{
+	return m_pList->size();
+}
+
+template<class _Myt>
 _Myt& ArrayList<_Myt>::get(int index)
 {
+	if (!IsValidIndex(index))
+	{
+		throw CExceptionEx();
+	}
 	return m_pList->at(index);
 }
 
 template<class _Myt>
 const _Myt& ArrayList<_Myt>::get(int index) const
 {
-	if (index < 0 || index >= m_pList->size())
+	if (!IsValidIndex(index))
 	{
-		return NULL;
+		throw CExceptionEx();
 	}
 	return m_pList->at(index);
 }
@@ -78,7 +128,7 @@ bool ArrayList<_Myt>::add(const _Myt& obj)
 template<class _Myt>
 bool ArrayList<_Myt>::remove(int index)
 {
-	if (index < 0 || index > m_pList->size())
+	if (!IsValidIndex(index))
 	{
 		return false;
 	}
@@ -101,7 +151,7 @@ void ArrayList<_Myt>::clear()
 template<class _Myt>
 bool ArrayList<_Myt>::setAt(int index, _Myt element)
 {
-	if (index < 0 || index > m_pList->size())
+	if (!IsValidIndex(index))
 	{
 		return false;
 	}
@@ -114,11 +164,21 @@ bool ArrayList<_Myt>::setAt(int index, _Myt element)
 template<class _Myt>
 const _Myt& ArrayList<_Myt>::operator[] (int index) const
 {
+	if (!IsValidIndex(index))
+	{
+		throw CExceptionEx();
+	}
+
 	return m_pList->at(index);
 }
 
 template<class _Myt>
 _Myt& ArrayList<_Myt>::operator[] (int index)
 {
+	if (!IsValidIndex(index))
+	{
+		throw CExceptionEx();
+	}
+
 	return m_pList->at(index);
 }

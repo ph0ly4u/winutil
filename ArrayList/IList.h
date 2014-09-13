@@ -10,9 +10,11 @@ public:
 	virtual void clear() = 0;
 	virtual bool remove(int index) = 0;
 	virtual const _Myt& get(int index) const = 0;
-	virtual _Myt& get(int index) = 0;
+	virtual _Myt& get(int index)= 0;
 	virtual bool isEmpty() = 0;
+	virtual bool isEmpty() const = 0;
 	virtual size_t size() = 0;
+	virtual size_t size() const = 0;
 	virtual bool setAt(int index, _Myt element) = 0;
 
 	virtual const _Myt& operator[] (int index) const = 0;
